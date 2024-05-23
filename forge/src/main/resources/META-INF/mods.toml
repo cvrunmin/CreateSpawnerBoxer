@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[${forge_version},)"
+#issueTrackerURL = ""
+license = "Insert License Here"
+
+[[mods]]
+modId = "createspawnerboxer"
+version = "${version}"
+displayName = "Create: SpawnerBoxer"
+authors = "cvrunmin"
+description = '''
+This mod adds more peripherals and functions for Create components
+'''
+logoFile = "icon.png"
+
+[[dependencies.createspawnerboxer]]
+modId = "forge"
+mandatory = true
+versionRange = "[${forge_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.createspawnerboxer]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft_version}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.createspawnerboxer]]
+modId="create"
+mandatory=true
+versionRange="${create_version}"
+ordering="NONE"
+side="BOTH"
