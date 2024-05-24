@@ -6,6 +6,9 @@
   "client": [
   ],
   "mixins": [
+    "BaseSpawnerMixin",
+    "DeployerBlockEntityMixin",
+    "LevelMixin"
   ],
   "injectors": {
     "defaultRequire": 1
