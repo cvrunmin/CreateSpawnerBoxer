@@ -1,5 +1,6 @@
 package io.github.cvrunmin.createspawnerboxer.mixin;
 
+import io.github.cvrunmin.createspawnerboxer.accessor.IDeployerCacheAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 
 import io.github.cvrunmin.createspawnerboxer.LevelBasedDeployerCache;

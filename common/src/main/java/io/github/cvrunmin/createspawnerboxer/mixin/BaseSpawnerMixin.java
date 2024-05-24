@@ -1,5 +1,7 @@
 package io.github.cvrunmin.createspawnerboxer.mixin;
 
+import io.github.cvrunmin.createspawnerboxer.accessor.IDeployerCacheAccessor;
+import io.github.cvrunmin.createspawnerboxer.accessor.IDeployerModeAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.Level;

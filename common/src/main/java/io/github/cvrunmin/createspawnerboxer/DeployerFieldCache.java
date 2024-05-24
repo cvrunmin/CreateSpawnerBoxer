@@ -13,7 +13,7 @@ public class DeployerFieldCache {
     private static boolean wasFailed = false;
 
     private static boolean shouldInitialize(){
-        return !wasFailed && modeField != null && punchValue != null && useValue != null;
+        return !wasFailed && (modeField == null || punchValue == null || useValue == null);
     }
 
     private static void initializeReflection(){
@@ -22,8 +22,9 @@ public class DeployerFieldCache {
             moField = DeployerBlockEntity.class.getDeclaredField("mode");
             moField.setAccessible(true);
             DeployerFieldCache.modeField = moField;
-            Object[] enumConstants = moField.getDeclaringClass().getEnumConstants();
+            Object[] enumConstants = moField.getType().getEnumConstants();
             if(enumConstants == null){
+                SpawnerBoxer.LOGGER.warn("cannot retrieve reflection information of DeployerBlockEntity$Mode");
                 wasFailed = true;
                 return;
             }
@@ -37,7 +38,7 @@ public class DeployerFieldCache {
                 }
             }
         } catch (NoSuchFieldException | SecurityException e) {
-            e.printStackTrace();
+            SpawnerBoxer.LOGGER.warn("cannot retrieve reflection information of DeployerBlockEntity. Mod functions will be limited!", e);
             wasFailed = true;
         }
     }
@@ -52,7 +53,7 @@ public class DeployerFieldCache {
         try {
             return modeField.get(blockEntity);
         } catch (IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+            SpawnerBoxer.LOGGER.warn("cannot get deployer mode via reflectiony. Mod functions will be limited!", e);
             return null;
         }
     }

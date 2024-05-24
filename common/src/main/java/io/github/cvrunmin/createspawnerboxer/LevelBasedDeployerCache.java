@@ -19,14 +19,10 @@ public class LevelBasedDeployerCache {
 
     public DeployerBlockEntity getNearestDeployer(BlockPos centerPos, int searchRadius, Predicate<DeployerBlockEntity> predicate){
         SectionPos centerSectionPos = SectionPos.of(centerPos);
-        SectionPos lowerLeft = SectionPos.of(centerPos.getX() - searchRadius, centerPos.getY() - searchRadius, centerPos.getZ() - searchRadius);
-        SectionPos upperRight = SectionPos.of(centerPos.getX() + searchRadius, centerPos.getY() + searchRadius, centerPos.getZ() + searchRadius);
+        SectionPos lowerLeft = SectionPos.of(centerPos.offset(-searchRadius, -searchRadius, -searchRadius));
+        SectionPos upperRight = SectionPos.of(centerPos.offset(searchRadius, searchRadius, searchRadius));
         List<SectionPos> searchingPos = SectionPos.betweenClosedStream(lowerLeft.x(), lowerLeft.y(), lowerLeft.z(), upperRight.x(), upperRight.y(), upperRight.z())
-            .sorted(new Comparator<SectionPos>() {
-                public int compare(SectionPos o1, SectionPos o2) {
-                    return Integer.compare(o1.distManhattan(centerSectionPos), o2.distManhattan(centerSectionPos));
-                }
-            }).toList();
+            .sorted(Comparator.comparingInt(o -> o.distManhattan(centerSectionPos))).toList();
         
         DeployerBlockEntity lastWinner = null;
         double lastWinnerDist = Double.MAX_VALUE;
@@ -58,7 +54,7 @@ public class LevelBasedDeployerCache {
     public boolean removeDeployer(DeployerBlockEntity entity){
         SectionPos secPos = SectionPos.of(entity.getBlockPos());
         if(this.deployersFromSectionPos.containsKey(secPos)){
-            return this.deployersFromSectionPos.get(secPos).remove(entity)
+            return this.deployersFromSectionPos.get(secPos).remove(entity);
         }
         return false;
     }

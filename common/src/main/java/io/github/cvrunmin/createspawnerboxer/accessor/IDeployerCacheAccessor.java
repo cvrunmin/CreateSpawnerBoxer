@@ -1,4 +1,4 @@
-package io.github.cvrunmin.createspawnerboxer.mixin;
+package io.github.cvrunmin.createspawnerboxer.accessor;
 
 import io.github.cvrunmin.createspawnerboxer.LevelBasedDeployerCache;
 
