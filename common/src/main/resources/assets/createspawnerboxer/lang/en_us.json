@@ -1,0 +1,12 @@
+{
+    "createspawnerboxer.ponder.deployer_boxing.header": "When Deployer Meets Spawner...",
+    "createspawnerboxer.ponder.deployer_boxing.text_1": "\"I'm eager with bloods...\"",
+    "createspawnerboxer.ponder.deployer_boxing.text_2": "\"Uhhhh!\"",
+    "createspawnerboxer.ponder.deployer_boxing.text_3": "\"I can't hold it anymore!\"",
+    "createspawnerboxer.ponder.deployer_boxing.text_4": "\"o_O;!\"",
+    "createspawnerboxer.ponder.deployer_boxing.text_5": "\"Battle... yes!\"",
+    "createspawnerboxer.ponder.deployer_boxing.text_6": "A working deployer imitating Left-click action can activate spawner, as if a player is standing nearby.",
+    "createspawnerboxer.ponder.deployer_boxing.text_7": "\"Hey! No fleeing!\"",
+    "createspawnerboxer.ponder.deployer_boxing.text_8": "However, mobs still despawn if player isn't within the mob spawning range.",
+    "createspawnerboxer.ponder.deployer_boxing.text_9": "Deployer on Contraption will not activate spawners. Deployer in server without Create: SpawnerBoxer installed will not activate spawners either."
+}

@@ -1,5 +1,6 @@
 package io.github.cvrunmin.createspawnerboxer.mixin;
 
+import io.github.cvrunmin.createspawnerboxer.SpawnerBoxer;
 import io.github.cvrunmin.createspawnerboxer.accessor.IDeployerCacheAccessor;
 import io.github.cvrunmin.createspawnerboxer.accessor.IDeployerModeAccessor;
 import net.minecraft.core.BlockPos;
@@ -19,6 +20,11 @@ public abstract class BaseSpawnerMixin {
 
     @Inject(method = "isNearPlayer", at = @At("HEAD"), cancellable = true)
     public void createspawnerboxer$isNearbyPlayer(Level level, BlockPos pos, CallbackInfoReturnable<Boolean> cir){
+        if(level.isClientSide){
+            if(!SpawnerBoxer.existsOnServer()){
+                return;
+            }
+        }
         var deployerCache = ((IDeployerCacheAccessor)level).getDeployerCache();
         var deployer1 = deployerCache.getNearestDeployer(pos, requiredPlayerRange, deployer -> deployer.getSpeed() != 0 && ((IDeployerModeAccessor)deployer).isPunchMode());
         if(deployer1 != null){

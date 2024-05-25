@@ -13,6 +13,9 @@
   "entrypoints": {
     "main": [
       "io.github.cvrunmin.createspawnerboxer.fabric.SpawnerBoxerFabric"
+    ],
+    "client": [
+      "io.github.cvrunmin.createspawnerboxer.fabric.SpawnerBoxerFabricClient"
     ]
   },
   "mixins": [

@@ -12,6 +12,7 @@ description = '''
 This mod adds more peripherals and functions for Create components
 '''
 logoFile = "icon.png"
+displayTest = "IGNORE_ALL_VERSION"
 
 [[dependencies.createspawnerboxer]]
 modId = "forge"

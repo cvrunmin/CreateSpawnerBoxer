@@ -1,9 +1,6 @@
 package io.github.cvrunmin.createspawnerboxer;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
 import net.minecraft.core.BlockPos;
@@ -11,7 +8,7 @@ import net.minecraft.core.SectionPos;
 import com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity;
 
 public class LevelBasedDeployerCache {
-    private HashMap<SectionPos, ArrayList<DeployerBlockEntity>> deployersFromSectionPos = new HashMap<>();
+    private HashMap<SectionPos, HashMap<BlockPos, DeployerBlockEntity>> deployersFromSectionPos = new HashMap<>();
     
     public DeployerBlockEntity getNearestDeployer(BlockPos centerPos, int searchRadius){
         return getNearestDeployer(centerPos, searchRadius, (deployer) -> true);
@@ -32,7 +29,7 @@ public class LevelBasedDeployerCache {
                 break; // no more candidate can be found
             }
             if(deployersFromSectionPos.containsKey(secPos)){
-                for(DeployerBlockEntity blockEntity : deployersFromSectionPos.get(secPos)){
+                for(DeployerBlockEntity blockEntity : deployersFromSectionPos.get(secPos).values()){
                     if(blockEntity == null) continue;
                     double newDist = centerPos.distSqr(blockEntity.getBlockPos());
                     if(newDist > lastWinnerDist) continue;
@@ -48,13 +45,13 @@ public class LevelBasedDeployerCache {
     }
 
     public void addDeployer(DeployerBlockEntity entity){
-        this.deployersFromSectionPos.computeIfAbsent(SectionPos.of(entity.getBlockPos()), idx -> new ArrayList<>()).add(entity);
+        this.deployersFromSectionPos.computeIfAbsent(SectionPos.of(entity.getBlockPos()), idx -> new HashMap<>()).put(entity.getBlockPos(), entity);
     }
 
     public boolean removeDeployer(DeployerBlockEntity entity){
         SectionPos secPos = SectionPos.of(entity.getBlockPos());
         if(this.deployersFromSectionPos.containsKey(secPos)){
-            return this.deployersFromSectionPos.get(secPos).remove(entity);
+            return this.deployersFromSectionPos.get(secPos).remove(entity.getBlockPos()) != null;
         }
         return false;
     }
