@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[${forge_version},)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "MIT"
 
 [[mods]]
 modId = "createspawnerboxer"
@@ -9,7 +9,7 @@ version = "${version}"
 displayName = "Create: SpawnerBoxer"
 authors = "cvrunmin"
 description = '''
-This mod adds more peripherals and functions for Create components
+Now deployer activates spawners!
 '''
 logoFile = "icon.png"
 displayTest = "IGNORE_ALL_VERSION"

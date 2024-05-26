@@ -20,7 +20,7 @@ public class SpawnerBoxerPonders {
     static final PonderRegistrationHelper HELPER = new PonderRegistrationHelper(SpawnerBoxer.MOD_ID);
 
     public static void register(){
-        HELPER.addStoryBoard(AllBlocks.DEPLOYER, "deployer/spawner_boxer", SpawnerBoxerPonders::deployerBoxingPonder);
+        HELPER.forComponents(AllBlocks.DEPLOYER).addStoryBoard("deployer/spawner_boxer", SpawnerBoxerPonders::deployerBoxingPonder);
     }
 
     public static void deployerBoxingPonder(SceneBuilder scene, SceneBuildingUtil util){
@@ -69,10 +69,8 @@ public class SpawnerBoxerPonders {
             Zombie zombie = EntityType.ZOMBIE.create(level);
             Vec3 p = util.vector.topOf(spawnerPos);
             zombie.setPosRaw(p.x, p.y, p.z);
-            zombie.xo = p.x;
-            zombie.yo = p.y;
-            zombie.zo = p.z;
             zombie.setYRot(zombie.yRotO = 90.f);
+            zombie.setYHeadRot(zombie.yHeadRotO = 90.0f);
             return zombie;
         });
         scene.idle(10);

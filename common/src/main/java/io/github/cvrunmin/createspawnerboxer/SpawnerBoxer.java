@@ -15,6 +15,9 @@ public class SpawnerBoxer {
     public static void init() {
         LOGGER.info("{} initializing! Create version: {} on platform: {}", NAME, Create.VERSION, SpawnerBoxerExpectedPlatform.platformName());
 //        ExampleBlocks.init(); // hold registrate in a separate class to avoid loading early on forge
+    }
+
+    public static void clientInit(){
         SpawnerBoxerPonders.register();
     }
 

@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 public class SpawnerBoxerFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        SpawnerBoxer.clientInit();
         ClientPlayNetworking.registerGlobalReceiver(ConstantsFabric.EXIST_CHECK_CHANNEL,
                 (client, handler, buf, responseSender) -> { }
         );

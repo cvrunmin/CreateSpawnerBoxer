@@ -3,12 +3,12 @@
   "id": "createspawnerboxer",
   "version": "${version}",
   "name": "Create: SpawnerBoxer",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Now Deployer activates spawners!",
   "authors": [
     "cvrunmin"
   ],
-  "license": "Insert License Here",
-  "icon": "assets/examplemod/icon.png",
+  "license": "MIT",
+  "icon": "assets/createspawnerboxer/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -19,6 +19,7 @@
     ]
   },
   "mixins": [
+    "createspawnerboxer-common.mixins.json",
     "createspawnerboxer.mixins.json"
   ],
   "depends": {

@@ -1,0 +1,12 @@
+{
+    "createspawnerboxer.ponder.deployer_boxing.header": "當機械手遇上生成籠...",
+    "createspawnerboxer.ponder.deployer_boxing.text_1": "「我好想打交...」",
+    "createspawnerboxer.ponder.deployer_boxing.text_2": "「啊啊啊啊啊！」",
+    "createspawnerboxer.ponder.deployer_boxing.text_3": "「我忍唔到啦！」",
+    "createspawnerboxer.ponder.deployer_boxing.text_4": "「o_O;!」",
+    "createspawnerboxer.ponder.deployer_boxing.text_5": "「打交... 爽啊！」",
+    "createspawnerboxer.ponder.deployer_boxing.text_6": "一個模仿緊玩家左鍵嘅機械手可以激活生成籠，就好似玩家企係附近咁",
+    "createspawnerboxer.ponder.deployer_boxing.text_7": "「喂！咪走啊！」",
+    "createspawnerboxer.ponder.deployer_boxing.text_8": "但係，如果玩家唔係清除半徑範圍裏面嘅話，生物依然會被清除",
+    "createspawnerboxer.ponder.deployer_boxing.text_9": "移動結構上面嘅機械手唔會激活生成籠，伺服器無裝 Create: SpawnerBoxer 都係"
+}
