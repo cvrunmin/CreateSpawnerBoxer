@@ -6,7 +6,6 @@
   "client": [
   ],
   "mixins": [
-    "DeployerBlockEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
