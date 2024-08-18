@@ -15,7 +15,7 @@ public class SpawnerBoxerFabric implements ModInitializer {
         if(FabricLoader.getInstance().isModLoaded("create")){
             if(FabricLoader.getInstance().getModContainer("create")
                     .map(modContainer -> modContainer.getMetadata().getVersion().getFriendlyString())
-                    .map(versionString -> versionString.contains("0.5.1-f") && !versionString.contains("build.1335")).orElse(false)){
+                    .map(versionString -> versionString.contains("0.5.1-f")).orElse(false)){
                 // separate to another class as ChangeTarget event is shipped after patch.1
                 EventListeners.listen();
             }
