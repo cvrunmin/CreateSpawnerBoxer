@@ -31,6 +31,6 @@ side = "BOTH"
 [[dependencies.createspawnerboxer]]
 modId="create"
 mandatory=true
-versionRange="${create_version}"
+versionRange="[${create_version},)"
 ordering="NONE"
 side="BOTH"

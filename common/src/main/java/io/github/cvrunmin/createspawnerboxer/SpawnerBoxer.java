@@ -1,6 +1,8 @@
 package io.github.cvrunmin.createspawnerboxer;
 
 import com.simibubi.create.Create;
+import com.simibubi.create.CreateBuildInfo;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,12 +15,11 @@ public class SpawnerBoxer {
 
 
     public static void init() {
-        LOGGER.info("{} initializing! Create version: {} on platform: {}", NAME, Create.VERSION, SpawnerBoxerExpectedPlatform.platformName());
-//        ExampleBlocks.init(); // hold registrate in a separate class to avoid loading early on forge
+        LOGGER.info("{} initializing! Create version: {} on platform: {}", NAME, CreateBuildInfo.VERSION, SpawnerBoxerExpectedPlatform.platformName());
     }
 
     public static void clientInit(){
-        SpawnerBoxerPonders.register();
+        PonderIndex.addPlugin(new SpawnerBoxerPonderPlugin());
     }
 
     public static ResourceLocation id(String path) {

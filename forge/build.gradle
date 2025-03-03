@@ -14,6 +14,13 @@ loom {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
     }
+
+    runs.configureEach {
+        property("mixin.env.remapRefMap", "true")
+        property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
+
+        programArg("-mixin.config=create.mixins.json")
+    }
 }
 
 configurations {
@@ -27,11 +34,18 @@ configurations {
 repositories {
     // mavens for Forge-exclusives
     maven { url = "https://maven.theillusivec4.top/" } // Curios
+    maven { // Create, Ponder, Flywheel
+        url = "https://maven.createmod.net"
+        content {
+            includeGroup("com.simibubi.create")
+            includeGroup("dev.engine-room.flywheel")
+            includeGroup("net.createmod.ponder")
+        }
+    }
     maven { // Create Forge and Registrate Forge
         url = "https://maven.tterrag.com/"
         content {
             includeGroup("com.tterrag.registrate")
-            includeGroup("com.simibubi.create")
         }
     }
 }
@@ -43,8 +57,12 @@ dependencies {
 
     // Create and its dependencies
     modImplementation("com.simibubi.create:create-${minecraft_version}:${create_forge_version}:slim") { transitive = false }
+    modImplementation("net.createmod.ponder:Ponder-Forge-${minecraft_version}:${ponder_version}")
     modImplementation("com.tterrag.registrate:Registrate:${registrate_forge_version}")
-    modImplementation("com.jozufozu.flywheel:flywheel-forge-${flywheel_forge_minecraft_version}:${flywheel_forge_version}")
+    modCompileOnly("dev.engine-room.flywheel:flywheel-forge-api-${flywheel_forge_minecraft_version}:${flywheel_forge_version}")
+    modImplementation("dev.engine-room.flywheel:flywheel-forge-${flywheel_forge_minecraft_version}:${flywheel_forge_version}")
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
+    implementation(include("io.github.llamalad7:mixinextras-forge:0.4.1"))
 
     // Development QOL
     modLocalRuntime("mezz.jei:jei-${minecraft_version}-forge:${jei_version}") { transitive = false }
