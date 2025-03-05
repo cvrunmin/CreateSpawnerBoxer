@@ -1,28 +1,20 @@
 package io.github.cvrunmin.createspawnerboxer.forge;
 
 import io.github.cvrunmin.createspawnerboxer.SpawnerBoxer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 
 @Mod(SpawnerBoxer.MOD_ID)
 public class SpawnerBoxerForge {
 
-    public SpawnerBoxerForge(){
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public SpawnerBoxerForge(IEventBus modBus){
+        modBus.addListener(SpawnerBoxerForge::registerNetworking);
         SpawnerBoxer.init();
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> SpawnerBoxerForge.onClientCtor(modEventBus));
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> SpawnerBoxer.setModExistenceChecker(new ModExistenceCheckerForge()));
     }
 
-    public static void onClientCtor(IEventBus modEventBus){
-        modEventBus.addListener(SpawnerBoxerForge::clientInit);
-    }
-
-    public static void clientInit(final FMLClientSetupEvent event) {
-        SpawnerBoxer.clientInit();
+    public static void registerNetworking(final RegisterPayloadHandlersEvent event){
+        event.registrar("1").optional()
+                .configurationToClient(PseudoPayload.TYPE, PseudoPayload.CODEC, (arg, iPayloadContext) -> {});
     }
 }

@@ -1,6 +1,5 @@
 package io.github.cvrunmin.createspawnerboxer;
 
-import com.simibubi.create.Create;
 import com.simibubi.create.CreateBuildInfo;
 import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.resources.ResourceLocation;
@@ -12,6 +11,7 @@ public class SpawnerBoxer {
     public static final String NAME = "Create: SpawnerBoxer";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     private static IModExistenceChecker existenceChecker;
+    public static final ResourceLocation EXIST_CHECK_CHANNEL = SpawnerBoxer.id("existence_check");
 
 
     public static void init() {
@@ -23,7 +23,7 @@ public class SpawnerBoxer {
     }
 
     public static ResourceLocation id(String path) {
-        return new ResourceLocation(MOD_ID, path);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
     public static void setModExistenceChecker(IModExistenceChecker checker){
