@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.cvrunmin.createspawnerboxer.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+  ],
+  "mixins": [
+    "BaseSpawnerAccessor",
+    "BaseSpawnerMixin",
+    "DeployerBlockEntityMixin",
+    "LevelMixin",
+    "TrialSpawnerDataMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixinextras": {
+    "minVersion": "0.5.0"
+  }
+}

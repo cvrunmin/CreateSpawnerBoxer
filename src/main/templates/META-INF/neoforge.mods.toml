@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[${neoforge_loader_version},)"
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "createspawnerboxer"
+version = "${version}"
+displayName = "Create: SpawnerBoxer"
+authors = "cvrunmin"
+description = '''
+Now deployer activates spawners!
+'''
+logoFile = "icon.png"
+displayTest = "IGNORE_ALL_VERSION"
+
+[[mixins]]
+config="createspawnerboxer.mixins.json"
+
+[[dependencies.createspawnerboxer]]
+modId = "neoforge"
+mandatory = true
+versionRange = "[${neoforge_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.createspawnerboxer]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft_version}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.createspawnerboxer]]
+modId="create"
+mandatory=true
+versionRange="[${create_version},)"
+ordering="NONE"
+side="BOTH"
